@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbCommands", "DbCommands\DbCommands.csproj", "{3657388E-A84C-4B85-929D-D766E0FF2A3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{E8EA4D99-198C-4BAF-AA70-D1E8FB81A3BD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{3657388E-A84C-4B85-929D-D766E0FF2A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3657388E-A84C-4B85-929D-D766E0FF2A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3657388E-A84C-4B85-929D-D766E0FF2A3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8EA4D99-198C-4BAF-AA70-D1E8FB81A3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8EA4D99-198C-4BAF-AA70-D1E8FB81A3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8EA4D99-198C-4BAF-AA70-D1E8FB81A3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8EA4D99-198C-4BAF-AA70-D1E8FB81A3BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
