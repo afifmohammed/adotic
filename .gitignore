@@ -1,0 +1,6 @@
+# git ignore file
+_Resharper.Adotic/
+*.suo
+bin/
+obj/
+*.vspscc
