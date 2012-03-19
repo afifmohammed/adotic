@@ -13,7 +13,7 @@ namespace Adotic
             var param = new SqlParameter(parameterName, parameterValue ?? DBNull.Value) { DbType = TypeConverter.ToDbType(parameterType) };
             if(parameterValue != null)
             {
-                if (typeof(DataTable).IsAssignableFrom(parameterValue.GetType()))
+                if (parameterValue is DataTable)
                 {
                     param.SqlDbType = SqlDbType.Structured;
                     param.TypeName = ((DataTable)parameterValue).TableName;
