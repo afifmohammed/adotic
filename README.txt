@@ -1,4 +1,4 @@
-Say you have stored procedure that asks for the name and age and returns every customer that matches. Lets create a poco class that represents the criteria to be passed in to the procedure. We will override the tostring method to return the name of the stored procedure.
+Say you have stored procedure that asks for the name and age and returns every customer that matches. Lets create a poco class that represents the criteria to be passed in to the procedure. We will override the ToString method to return the name of the stored procedure.
 	
 	public class CustomersByNameAndAgeQuery {
 		public string Name {get;set;}
@@ -9,7 +9,7 @@ Say you have stored procedure that asks for the name and age and returns every c
 		}
 	}
 	
-Lets assume the procedure returns all customers with id, name, age & Dob. Suppose we have a CLR type matches exactly what is returned.
+Lets assume the procedure returns all customers with id, name, age & Dob. Suppose we have a CLR type that matches exactly what is returned.
 
 	public class Customer {
 		public int Id {get;set;}
@@ -20,13 +20,15 @@ Lets assume the procedure returns all customers with id, name, age & Dob. Suppos
 	
 Since we have a class that by convention maps to the stored procedure and we have a return type that is the same too, we can simply do the following to call the procedure.
 
-	IAdoSessoin<Customer> session {get;set;} // reference obtained via property or ctor injection
+	// reference obtained via property or ctor injection
+	IAdoSessoin<Customer> session {get;set;} 
 	
-	var customers = session.Execute(new CustomersByNameAndAgeQuery {Name = 'Mary', Age = 34});
+	var customers = session.Execute(
+			new CustomersByNameAndAgeQuery {Name = 'Mary', Age = 34});
 	
 We did not have to write any code to add parameters to the procedure, map returned data reader columns to the CLR type, or even have to manage with opening and closing the connection.
 
-Lets say for arguments sake the Dob stored as a long in the database. We now have a property mismatch since the CLR type declares it as an DateTime.
+Lets say for arguments sake the Dob is stored as a long in the database. We now have a property mismatch since the CLR type declares it as DateTime.
 
 By implementing the following class we can handle this mapping exception.
 
@@ -43,8 +45,8 @@ By implementing the following class we can handle this mapping exception.
 		}
 	}
 
-Note: This is not the best way to handle mapping. The next version will have support so that an impedance handler class will take in a property info and the data reader, so it can assign the property a value by building it from one or many values from the passed in reader.
+The next version will have support so that an impedance handler class will take in a property info and the data reader, so it can assign the property a value by building it from one or many values from the passed in reader.
 
-Also note for Adotic to work the developer is required to provide a binding for a Func<DbConnection>. The next vesrion will have some of support such that with no setup from the developer the connection can be created following some convetion that can be overriden easily.
+Also note for Adotic to work the developer is required to provide a binding for a Func<DbConnection>. The next version will have some of support such that with no setup from the developer the connection can be created following some convention that they can override easily.
 
 Also Adotic will open and close the connection for every call to Execute. The next version will have support for multiple calls to use the same connection. 
